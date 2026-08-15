@@ -93,6 +93,6 @@ All common operations are wrapped in **Mise** tasks to provide a consistent and 
 
 **Misc**
 * `client` - Connect to ClickHouse using CLI client (alias: `cli`)
-* `dashboard` - Open embedded ClickHouse dashboard in browser
+* `dashboard` - Open embedded ClickHouse dashboard in browser (alias: `dash`)
 * `sql` - Open embedded ClickHouse SQL console in browser
 
