@@ -64,7 +64,7 @@ mise dataset:load ontime
 ```
 
 > [!NOTE]
-> The datasets available list is hardcoded in the Mise task to simplify the process (use tab completion to choose a dataset) :)
+> The available datasets are hardcoded in the Mise task to simplify the process (use tab completion to choose a dataset) :)
 
 ### Versions management
 
