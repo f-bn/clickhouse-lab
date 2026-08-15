@@ -75,6 +75,7 @@ run = "clickhouse-client --history_file=./.clickhouse-history"
 
 [tasks.dashboard]
 description = "Open embedded ClickHouse dashboard in browser"
+alias = "dash"
 run = "xdg-open http://localhost:8123/dashboard?user=${CLICKHOUSE_USER}"
 
 [tasks.sql]
