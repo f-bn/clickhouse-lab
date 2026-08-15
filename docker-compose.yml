@@ -1,0 +1,42 @@
+---
+name: clickhouse-lab
+
+#---------------------------------------------------------------------
+# Services
+#---------------------------------------------------------------------
+services:
+  server:
+    image: ghcr.io/f-bn/clickhouse:${CLICKHOUSE_VERSION}
+    container_name: ${COMPOSE_PROJECT_NAME}-server
+    hostname: clickhouse-server
+    environment:
+      CLICKHOUSE_USER: ${CLICKHOUSE_USER}
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD}
+    volumes:
+      - type: volume
+        source: server-data
+        target: /var/lib/clickhouse
+    ports:
+      - 127.0.0.1:8123:8123 # HTTP port
+      - 127.0.0.1:9000:9000 # Native Protocol port
+      - 127.0.0.1:9004:9004 # MySQL emulation port
+      - 127.0.0.1:9005:9005 # PostgreSQL emulation port
+    mem_limit: 16gb
+
+    # TODO: 
+    # - add backup volume
+    # - add PostgreSQL instance for setting up integration with ClickHouse
+
+#---------------------------------------------------------------------
+# Volumes
+#---------------------------------------------------------------------
+volumes:
+  server-data:
+    driver: local
+
+#---------------------------------------------------------------------
+# Network
+#---------------------------------------------------------------------
+networks:
+  default:
+    name: ${COMPOSE_PROJECT_NAME}-net

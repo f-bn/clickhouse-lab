@@ -1,0 +1,83 @@
+#---------------------------------------------------------------------
+# Tools
+#---------------------------------------------------------------------
+[tools]
+clickhouse = "26.7.3.19-stable"
+
+#---------------------------------------------------------------------
+# Environment variables
+#---------------------------------------------------------------------
+[env]
+# Versions
+CLICKHOUSE_VERSION = "26.7.3.19"
+
+# Connection paramaters
+CLICKHOUSE_USER = "clickhouse"
+CLICKHOUSE_PASSWORD = "clickhouse"
+CLICKHOUSE_HOST = "localhost"
+
+#---------------------------------------------------------------------
+# Tasks
+#---------------------------------------------------------------------
+
+# - Stack management -
+[tasks.start]
+description = "Start stack"
+run = "docker compose up -d"
+
+[tasks.stop]
+description = "Stop stack"
+run = "docker compose stop"
+
+[tasks.clean]
+description = "Clean all stack resources (services, volumes, networks)"
+run = [
+  "docker compose down --volumes --remove-orphans",
+  "rm -f .clickhouse-history"
+]
+
+[tasks.reset]
+description = "Reset stack from scratch"
+run = [
+    { task = "clean" },
+    { task = "start" }
+]
+
+# - Service management -
+[tasks.logs]
+description = "Get logs from a given service"
+usage = '''
+arg "<service>" help="Name of the service to display logs from" {
+  choices "server"
+}
+flag "-f --follow" help="Follow log output" default=#false
+'''
+run = "docker compose logs {{ usage.service }} {% if usage.follow %}--follow{% endif %}"
+
+# - Dataset management -
+[tasks."dataset:load"]
+description = "Load sample dataset into ClickHouse"
+usage = '''
+arg "<name>" {
+  choices "cell-towers" "ontime"
+  help "Name of the dataset to load"
+}
+'''
+run = "clickhouse-client --progress --time --queries-file=./datasets/{{ usage.name }}.sql"
+
+# - Misc -
+[tasks.client]
+description = "Connect to ClickHouse using CLI client"
+alias = "cli"
+interactive = true
+raw_args = true
+run = "clickhouse-client --history_file=./.clickhouse-history"
+
+[tasks.dashboard]
+description = "Open embedded ClickHouse dashboard in browser"
+run = "xdg-open http://localhost:8123/dashboard?user=${CLICKHOUSE_USER}"
+
+[tasks.sql]
+description = "Open embedded ClickHouse SQL console in browser"
+run = "xdg-open http://localhost:8123/play?user=${CLICKHOUSE_USER}"
+
