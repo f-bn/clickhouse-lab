@@ -38,7 +38,7 @@ Once the prerequisites are installed, you can simply launch the environment prov
 mise start
 ```
 
-Finally, you can access the ClickHouse via CLI or the embedded ClickHouse consoles:
+Finally, you can access the ClickHouse via CLI or the embedded SQL console:
 
 * CLI (ClickHouse Client)
 
@@ -46,10 +46,9 @@ Finally, you can access the ClickHouse via CLI or the embedded ClickHouse consol
   mise client
   ```
 
-* Embedded
+* Embedded SQL console
 
   ```bash
-  mise dashboard
   mise sql
   ```
 
