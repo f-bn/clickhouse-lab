@@ -66,6 +66,25 @@ mise dataset:load ontime
 > [!NOTE]
 > The available datasets are hardcoded in the Mise task to simplify the process (pro-tip: use tab completion to choose a dataset).
 
+### Integrations
+
+ClickHouse can be integrated with external systems such as object storage, event streaming platforms (e.g Kafka), or databases (e.g PostgreSQL, MySQL or MongoDB).
+
+In this lab, some of these systems can be optionally enabled with `--enable-<integration>` flags if available:
+
+```bash
+$ mise start --help     
+Start stack
+
+Usage: start [--enable-pg]
+
+Flags:
+  --enable-pg  Enable PostgreSQL integration
+
+# Enable PostgreSQL integration
+mise start --enable-pg
+```
+
 ### Versions management
 
 Stack services versions are managed in the [mise.toml](./mise.toml) file in the `env` section. These variables are loaded directly in shell environment variables by Mise once entering the stack folder.
@@ -73,6 +92,7 @@ Stack services versions are managed in the [mise.toml](./mise.toml) file in the 
 ```toml
 [env]
 CLICKHOUSE_VERSION = "26.7.3.19"
+POSTGRESQL_VERSION = "18.6"
 ```
 
 ### Mise tasks available
