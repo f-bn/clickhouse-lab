@@ -56,11 +56,11 @@ Finally, you can access the ClickHouse via CLI or the embedded SQL console:
 
 In the [`datasets`](./datasets/) folder, there are SQL scripts to load various public datasets referenced on the ClickHouse [website](https://clickhouse.com/docs/get-started/sample-datasets).
 
-To import a dataset, simply run the `mise dataset:load` task with the name of the file without the `.sql` suffix:
+To import a dataset, simply run the `mise load-dataset` task with the name of the file without the `.sql` suffix:
 
 ```bash
-mise dataset:load cell-towers
-mise dataset:load ontime
+mise load-dataset cell-towers
+mise load-dataset ontime
 ```
 
 > [!NOTE]
@@ -104,12 +104,10 @@ All common operations are wrapped in **Mise** tasks to provide a consistent and 
 * `stop` - Stop stack
 * `clean` - Clean all stack resources (services, volumes, networks)
 * `reset` - Reset stack from scratch
-
-**Service management**
 * `logs` - Get logs from a given stack service
 
 **Datasets management**
-* `dataset:load` - Load sample dataset into ClickHouse
+* `load-dataset` - Load sample dataset into ClickHouse
 
 **Misc**
 * `client` - Connect to ClickHouse using CLI client (alias: `cli`)

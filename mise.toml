@@ -58,7 +58,6 @@ run = [
     { task = "start" }
 ]
 
-# - Service management -
 [tasks.logs]
 description = "Get logs from a given service"
 usage = '''
@@ -69,8 +68,8 @@ flag "-f --follow" help="Follow log output" default=#false
 '''
 run = "docker compose logs {{ usage.service }} {% if usage.follow %}--follow{% endif %}"
 
-# - Dataset management -
-[tasks."dataset:load"]
+# - Datasets management -
+[tasks.load-dataset]
 description = "Load sample dataset into ClickHouse"
 usage = '''
 arg "<name>" {
