@@ -91,7 +91,7 @@ Stack services versions are managed in the [mise.toml](./mise.toml) file in the 
 
 ```toml
 [env]
-CLICKHOUSE_VERSION = "26.7.3.19"
+CLICKHOUSE_VERSION = "26.9.8.3"
 POSTGRESQL_VERSION = "18.6"
 ```
 
