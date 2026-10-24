@@ -79,4 +79,4 @@ run = "xdg-open http://localhost:8123/dashboard?user={{ env.CLICKHOUSE_USER }}"
 
 [tasks.sql]
 description = "Open embedded ClickHouse SQL console in browser"
-run = "xdg-open http://localhost:8123/play?user={{ env.CLICKHOUSE_USER }}"
+run = "xdg-open http://localhost:8123/ui"
