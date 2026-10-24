@@ -17,6 +17,10 @@ services:
         source: ./configs/clickhouse/backups.xml
         target: /etc/clickhouse-server/config.d/01-backups.xml
         bind: { selinux: Z }
+      - type: bind
+        source: ./datasets
+        target: /mnt/datasets
+        bind: { selinux: Z }
       - type: volume
         source: ch-data
         target: /var/lib/clickhouse
