@@ -14,8 +14,8 @@ services:
       CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD}
     volumes:
       - type: bind
-        source: ./configs/clickhouse/backups.xml
-        target: /etc/clickhouse-server/config.d/01-backups.xml
+        source: ./configs/clickhouse
+        target: /etc/clickhouse-server/config.d
         bind: { selinux: Z }
       - type: bind
         source: ./datasets
