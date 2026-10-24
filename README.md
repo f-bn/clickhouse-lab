@@ -22,23 +22,15 @@ Before getting started, ensure you have installed:
 > [!NOTE]
 > Mise is optional but **highly** recommended because some helpers commands and environment variables are managed through it for ease of management.
 
-### Setup
-
-First, you need to install the required tools via `mise`:
-
-```bash
-mise install
-```
-
 ### Provisioning
 
-Once the prerequisites are installed, you can simply launch the environment provisioning:
+You can simply launch the environment provisioning:
 
 ```bash
 mise start
 ```
 
-Finally, you can access the ClickHouse via CLI or the embedded SQL console:
+Once done, you can access ClickHouse via CLI or the embedded SQL console:
 
 * CLI (ClickHouse Client)
 
